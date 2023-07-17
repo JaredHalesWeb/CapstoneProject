@@ -61,35 +61,59 @@ cd server && npm start
 cd client && npm run dev
 ```
 
-# Use fetch API in App.js to make a request to server
+Open your browser and navigate to localhost:port  
+You should see the Vite and React logos
+
+# Use fetch API in App.jsx to make a request to server
 
 ```
-// client/src/App.js
+// client/src/App.jsx
 
-// client/src/App.js
-
-import React from "react";
-import "./App.css";
+import { useState, useEffect } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
-  const [data, setData] = React.useState(null);
+  const [count, setCount] = useState(0);
+  const [data, setData] = useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetch("/api")
       .then((res) => res.json())
       .then((data) => setData(data.message));
   }, []);
 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>{!data ? "Loading..." : data}</p>
-      </header>
-    </div>
-  );
+    <>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+          <h1>{!data ? "Loading..." : data}</h1>
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
 
-export default App;
+export default App
+
 
 ```
 
