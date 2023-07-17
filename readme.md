@@ -6,11 +6,11 @@ This project will hold the scripts needed for Render to build and run both the s
 
 # Create server npm project and node skeleton code.
 
-`mkdir server && cd server && npm init -y`
+`mkdir server && cd server && touch server.js`
 
 create basic express server:
 
-`touch server.js`
+`npm init -y`
 
 install express:
 
