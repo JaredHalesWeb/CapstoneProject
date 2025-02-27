@@ -100,9 +100,9 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+         <h1>{!data ? "Loading..." : data}</h1>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
-          <h1>{!data ? "Loading..." : data}</h1>
         </p>
       </div>
       <p className="read-the-docs">
