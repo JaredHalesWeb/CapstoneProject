@@ -22,14 +22,25 @@ function App() {
 
 
   return (
-
-      <form>
+    <div>
+      <form className=''>
         <input type='text' placeholder='Username' required></input>
         <input type='text' placeholder='Password' required></input>
         <input type="submit"></input>
         <p>Don't have an account? <span onClick={() => handleClick('Register')}>Register here</span></p>
-        
       </form>
+      <form>
+        <input type='text' placeholder='Username'></input>
+        <input type='text' placeholder='Password'></input>
+        <br/>
+        <input type='text' placeholder='First Name'></input>
+        <input type='text' placeholder='Last Name'></input>
+        <br/>
+        <input type='number' placeholder='Phone Number'></input>
+        <input type='text' placeholder='Address'></input>
+        <input type="submit"></input>
+      </form>
+    </div>
   )
 }
 
