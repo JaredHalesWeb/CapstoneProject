@@ -1,47 +1,20 @@
-"use client";
-// client/src/App.jsx
-
-import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0);
-  const [data, setData] = useState(null);
-
-  const handleClick = (name) => {
-    
-  };
-
-  useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
-
-
+// frontend/src/App.jsx
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Profile from './pages/Profile';
+const App = () => {
   return (
-    <div>
-      <form className=''>
-        <input type='text' placeholder='Username' required></input>
-        <input type='text' placeholder='Password' required></input>
-        <input type="submit"></input>
-        <p>Don't have an account? <span onClick={() => handleClick('Register')}>Register here</span></p>
-      </form>
-      <form>
-        <input type='text' placeholder='Username'></input>
-        <input type='text' placeholder='Password'></input>
-        <br/>
-        <input type='text' placeholder='First Name'></input>
-        <input type='text' placeholder='Last Name'></input>
-        <br/>
-        <input type='number' placeholder='Phone Number'></input>
-        <input type='text' placeholder='Address'></input>
-        <input type="submit"></input>
-      </form>
-    </div>
-  )
-}
-
-export default App
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+    </Router>
+  );
+};
+export default App;
