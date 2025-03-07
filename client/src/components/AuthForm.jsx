@@ -1,7 +1,7 @@
 // frontend/src/components/AuthForm.jsx
 import React, { useState } from 'react';
+
 const AuthForm = ({ onSubmit, isRegister }) => {
-  // Local state for registration/login form fields
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -11,15 +11,18 @@ const AuthForm = ({ onSubmit, isRegister }) => {
     address: '',
     password: '',
   });
+
   const handleChange = (e) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
   };
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="max-w-md w-full mx-auto p-6 bg-gray-800 rounded shadow-md">
       {isRegister && (
         <>
           <input
@@ -28,6 +31,7 @@ const AuthForm = ({ onSubmit, isRegister }) => {
             placeholder="Username"
             value={formData.username}
             onChange={handleChange}
+            className="w-full border border-gray-600 p-2 rounded mb-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
           <input
             type="text"
@@ -35,6 +39,7 @@ const AuthForm = ({ onSubmit, isRegister }) => {
             placeholder="First Name"
             value={formData.firstName}
             onChange={handleChange}
+            className="w-full border border-gray-600 p-2 rounded mb-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
           <input
             type="text"
@@ -42,6 +47,7 @@ const AuthForm = ({ onSubmit, isRegister }) => {
             placeholder="Last Name"
             value={formData.lastName}
             onChange={handleChange}
+            className="w-full border border-gray-600 p-2 rounded mb-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
           <input
             type="text"
@@ -49,6 +55,7 @@ const AuthForm = ({ onSubmit, isRegister }) => {
             placeholder="Telephone"
             value={formData.telephone}
             onChange={handleChange}
+            className="w-full border border-gray-600 p-2 rounded mb-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
           <input
             type="text"
@@ -56,6 +63,7 @@ const AuthForm = ({ onSubmit, isRegister }) => {
             placeholder="Address"
             value={formData.address}
             onChange={handleChange}
+            className="w-full border border-gray-600 p-2 rounded mb-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </>
       )}
@@ -65,6 +73,7 @@ const AuthForm = ({ onSubmit, isRegister }) => {
         placeholder="Email"
         value={formData.email}
         onChange={handleChange}
+        className="w-full border border-gray-600 p-2 rounded mb-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
       />
       <input
         type="password"
@@ -72,9 +81,16 @@ const AuthForm = ({ onSubmit, isRegister }) => {
         placeholder="Password"
         value={formData.password}
         onChange={handleChange}
+        className="w-full border border-gray-600 p-2 rounded mb-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
       />
-      <button type="submit">{isRegister ? 'Register' : 'Login'}</button>
+      <button
+        type="submit"
+        className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition-colors"
+      >
+        {isRegister ? 'Register' : 'Login'}
+      </button>
     </form>
   );
 };
+
 export default AuthForm;

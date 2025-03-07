@@ -1,5 +1,7 @@
 // frontend/src/services/api.js
 const API_URL = import.meta.env.VITE_API_URL;
+console.log('API_URL:', API_URL);
+
 const api = {
   post: async (endpoint, data) => {
     const response = await fetch(`${API_URL}${endpoint}`, {
@@ -7,12 +9,18 @@ const api = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || 'API error');
+    const text = await response.text();
+    let responseData;
+    try {
+      responseData = text ? JSON.parse(text) : {};
+    } catch (error) {
+      responseData = {};
     }
-    return response.json();
+    if (!response.ok) {
+      throw new Error(responseData.message || 'API error');
+    }
+    return responseData;
   },
-  // Additional methods (get, put, delete) can be added as needed.
 };
+
 export default api;
